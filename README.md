@@ -53,7 +53,7 @@ So that they can keep a list of books to purchase.
 Feel free to contribute to this repo by creating issues or sending an email to any of the contributors in the list below. 
 ```
 ## Project Team
-[Robel Gebremeskel](https://github.com/github-robel-codes) <br>
+[Robel Gebremeskel](https://github.com/robel-codes) <br>
 [Colin Bares](https://github.com/soundproofboot) <br>
 [Sepideh Ayani](https://github.com/SepidehAyani) <br>
 
