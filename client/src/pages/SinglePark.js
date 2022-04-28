@@ -1,7 +1,7 @@
 const SinglePark = () => {
   return (
     <div>
-      
+      Single Park Page
     </div>
   )
 }
