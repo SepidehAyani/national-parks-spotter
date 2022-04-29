@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // react router
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // apollo
 import {
@@ -21,9 +21,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import SinglePark from './pages/SinglePark';
-import NoMatch from './pages/NoMatch'
-import Login from './pages/Login'
-
+import NoMatch from './pages/NoMatch';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const httpLink = new HttpLink({
   uri: '/graphql',
@@ -49,15 +49,16 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-        <Nav />
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/park/:id' component={SinglePark} />
-            <Route component={NoMatch} ></Route>
-          </Switch>
-          <Footer />
+            <Nav />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/signup" element={<Signup />} />
+              <Route exact path="/dashboard" element={<Dashboard />} />
+              <Route exact path="/park/:id" element={<SinglePark />} />
+              <Route element={<NoMatch/>}></Route>
+            </Routes>
+            <Footer />
         </div>
       </Router>
     </ApolloProvider>
