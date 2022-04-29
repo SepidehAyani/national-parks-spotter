@@ -2,14 +2,16 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
+    _id: ID
     username: String!
     email: String!
     password: String!
     comments: [Comment]
-    favoriteParks: [Park]
+    favoriteParks: [String]
   }
 
   type Park {
+    _id: ID
     fullName: String!
     parkCode: String
     description: String!
@@ -21,14 +23,16 @@ const typeDefs = gql`
   }
 
   type Comment {
+    _id: ID
     commentText: String!
     createdAt: String
-    username: String!
+    userId: User!
     reactions: [Reaction]
     parkCode: String!
   }
 
   type Reaction {
+    _id: ID
     reactionBody: String!
     username: String!
     createdAt: String!
@@ -40,16 +44,18 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: User
+    me: User
+    user(_id: ID): User
+    users: [User]
     parks: [Park]
     park(_id: ID!): Park
   }
 
   type Mutation {
-    addUser(name: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addComment(_id: ID!, commentText: String!, parkCode: String!): Comment
-    favoriteParks(_id: ID!, parkCode: String!): User
+    addComment(commentText: String!, parkCode: String!): Comment
+    addFavorite(parkCode: String!): User
   }
 `;
 

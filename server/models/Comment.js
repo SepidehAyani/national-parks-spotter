@@ -10,13 +10,9 @@ const commentSchema = new Schema(
 			minlength: 1,
 			maxlength: 280
 		},
-		createdAt: {
-			type: Date,
-			default: Date.now,
-			get: timestamp => dateFormat(timestamp)
-		},
-		username: {
-			type: String,
+		userId: {
+			type: Schema.Types.ObjectId,
+      ref: 'User',
 			required: true
 		},
 		reactions: [reactionSchema],
@@ -28,7 +24,8 @@ const commentSchema = new Schema(
 	{
 		toJSON: {
 			getters: true
-		}
+		},
+    timestamps: true
 	}
 );
 
