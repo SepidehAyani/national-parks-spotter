@@ -19,7 +19,11 @@ const commentSchema = new Schema(
 			type: String,
 			required: true
 		},
-		reactions: [reactionSchema]
+		reactions: [reactionSchema],
+    parkCode: {
+      type: String,
+      required: true
+    }
 	},
 	{
 		toJSON: {
