@@ -22,6 +22,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import SinglePark from './pages/SinglePark';
 import NoMatch from './pages/NoMatch'
+import Login from './pages/Login'
 
 
 const httpLink = new HttpLink({
@@ -51,6 +52,7 @@ function App() {
         <Nav />
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/park/:id' component={SinglePark} />
             <Route component={NoMatch} ></Route>
