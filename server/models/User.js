@@ -28,7 +28,7 @@ const userSchema = new Schema({
 		}
 	],
 	// set faviorte parks to be an array of data that adheres to the parkSchema
-	favoriteParks: [parkSchema]
+	favoriteParks: [String]
 });
 
 // hash user password
