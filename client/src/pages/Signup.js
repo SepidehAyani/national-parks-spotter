@@ -4,8 +4,6 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-import { Button } from '@material-ui/core';
-
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
