@@ -20,7 +20,8 @@ const resolvers = {
       return await User.find().populate('comments');
     },
     user: async(parent, args, context) => {
-      return await User.findById(context.user._id).populate('comments');
+      console.log(args);
+      return await User.findById(args._id).populate('comments');
     }
   },
   Mutation: {
@@ -67,9 +68,13 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     addFavorite: async(parent, { parkCode }, context) => {
-      const user = await User.findByIdAndUpdate(context.user._id, {
-        $push: { favoriteParks: parkCode}
-      });
+      const user = await User.findByIdAndUpdate(
+        context.user._id,
+        {
+          $addToSet: { favoriteParks: parkCode },
+        },
+        { new: true }
+      );
 
       return user.populate('comments');
     }
