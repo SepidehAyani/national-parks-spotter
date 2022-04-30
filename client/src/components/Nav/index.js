@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 
@@ -6,9 +6,19 @@ const Nav = () => {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <a href='/' onClick={() => {Auth.logout()}}>
-          <Button variant="contained">Logout</Button>
-        </a>
+        <div>
+          <a
+            href="/"
+            onClick={() => {
+              Auth.logout();
+            }}
+          >
+            <Button variant="contained">Logout</Button>
+          </a>
+          <Link to='/dashboard'>
+            <Button variant='contained'>Dashboard</Button>
+          </Link>
+        </div>
       );
     } else {
       return (
