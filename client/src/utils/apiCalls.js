@@ -28,7 +28,7 @@ export const getOnePark = async parkCode => {
 }
 
 export const getAllParks = async () => {
-  let fullUrl = `${baseUrl}parks?`;
+  let fullUrl = `${baseUrl}parks?limit=466`;
   try {
     let parksData = await fetch(fullUrl, headers).then(res => res.json());
     return parksData
