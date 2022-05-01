@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+
+import { TextField, Button } from '@mui/material'
+
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -31,26 +33,27 @@ const Login = () => {
 
   return (
     <div>
-      <Link to="/signup"></Link>
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="email">Email address:</label>
-          <input
+          <TextField
+          variant='outlined'
+          label='Email Address'
+          value={formState.email}
             type="email"
             name="email"
             id="email"
-            placeholder="youremail@domain.com"
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input 
+          <TextField
+          variant='outlined'
+          label='Password'
+          value={formState.password} 
           type="password" 
           name='password'
           id='password'
-          placeholder='********'
           onChange={handleChange}
           />
         </div>
@@ -60,7 +63,7 @@ const Login = () => {
           </div>
         ): null}
         <div>
-          <button type='submit'>Submit</button>
+          <Button type='submit' variant='outlined'>Submit</Button>
         </div>
       </form>
     </div>
