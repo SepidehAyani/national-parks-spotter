@@ -6,15 +6,10 @@ import { QUERY_ME } from '../utils/queries';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
 import { Link } from 'react-router-dom'
 
-import ParkCard from '../components/ParkCard';
-
 const Dashboard = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_ME);
 
   const [parksList, setParksList] = useState([]);
 
@@ -27,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (data) {
       if (data.me.favoriteParks.length) {
-        loadParks(data.me.favoriteParks);      
+        loadParks(data.me.favoriteParks);
       }
     }
   }, [data]);
@@ -36,8 +31,8 @@ const Dashboard = () => {
     <div>
       {parksList.length ? (
         <>
-        <h2 id='dashboard-header'>Your Favorite Parks</h2>
-          <ImageList id='dashboard-image-list' sx={{ width: 600, aspectRatio: 1/1 }}>
+          <h2 id='dashboard-header'>Your Favorite Parks</h2>
+          <ImageList id='dashboard-image-list' sx={{ width: 600, aspectRatio: 1 / 1 }}>
             {parksList.map((park) => (
               <ImageListItem key={park.parkCode}>
                 <img

@@ -37,9 +37,9 @@ const Login = () => {
       <form onSubmit={handleFormSubmit}>
         <div>
           <TextField
-          variant='outlined'
-          label='Email Address'
-          value={formState.email}
+            variant='outlined'
+            label='Email Address'
+            value={formState.email}
             type="email"
             name="email"
             id="email"
@@ -48,20 +48,20 @@ const Login = () => {
         </div>
         <div>
           <TextField
-          variant='outlined'
-          label='Password'
-          value={formState.password} 
-          type="password" 
-          name='password'
-          id='password'
-          onChange={handleChange}
+            variant='outlined'
+            label='Password'
+            value={formState.password}
+            type="password"
+            name='password'
+            id='password'
+            onChange={handleChange}
           />
         </div>
         {error ? (
           <div>
             <p>Wrong email or password</p>
           </div>
-        ): null}
+        ) : null}
         <div>
           <Button type='submit' variant='outlined'>Submit</Button>
         </div>

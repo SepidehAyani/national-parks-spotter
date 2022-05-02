@@ -7,7 +7,7 @@ const headers = {
 };
 
 export const getFavoriteParks = async favArray => {
-  
+
   let fullUrl = `${baseUrl}parks?parkCode=${favArray}`
   try {
     let parksData = await fetch(fullUrl, headers).then(res => res.json());

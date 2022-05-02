@@ -8,10 +8,7 @@ import {
 	DialogActions,
 	Button
 } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
-// import { parksData } from "../utils/parkdata";
 import { getOnePark } from "../utils/apiCalls";
 import ImageGallery from "../components/ImageGallery";
 
