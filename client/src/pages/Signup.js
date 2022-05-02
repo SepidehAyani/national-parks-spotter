@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+
+import { TextField, Button } from '@mui/material';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -23,10 +24,9 @@ const Signup = () => {
           password: formState.password,
         },
       });
-  
+
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
-      
     } catch (error) {
       alert(error.message);
     }
@@ -45,37 +45,42 @@ const Signup = () => {
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
-          <input
+          <TextField
+            variant="outlined"
+            label="Username"
+            value={formState.username}
             type="text"
             name="username"
-            placeholder="Username"
             id="username"
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            placeholder="youremail@domain.com"
-            name="email"
+          <TextField
+            variant="outlined"
+            label="Email Address"
+            value={formState.email}
             type="email"
+            name="email"
             id="email"
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
+          <TextField
+            variant="outlined"
+            label="Password"
+            value={formState.password}
             type="password"
+            name="password"
             id="password"
             onChange={handleChange}
           />
         </div>
         <div>
-          <button type='submit'>Submit</button>
+          <Button type="submit" variant="outlined">
+            Submit
+          </Button>
         </div>
       </form>
     </div>
