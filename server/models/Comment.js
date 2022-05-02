@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const reactionSchema = require("./Reaction");
-const dateFormat = require("../utils/dateFormat");
 
 const commentSchema = new Schema(
 	{
@@ -12,24 +11,24 @@ const commentSchema = new Schema(
 		},
 		userId: {
 			type: Schema.Types.ObjectId,
-      ref: 'User',
+			ref: 'User',
 			required: true
 		},
 		reactions: [reactionSchema],
-    parkCode: {
-      type: String,
-      required: true
-    }
+		parkCode: {
+			type: String,
+			required: true
+		}
 	},
 	{
 		toJSON: {
 			getters: true
 		},
-    timestamps: true
+		timestamps: true
 	}
 );
 
-commentSchema.virtual("reactionCount").get(function() {
+commentSchema.virtual("reactionCount").get(function () {
 	return this.reactions.length;
 });
 

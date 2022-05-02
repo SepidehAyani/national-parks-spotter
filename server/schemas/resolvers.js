@@ -16,10 +16,10 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    users: async() => {
+    users: async () => {
       return await User.find().populate('comments');
     },
-    user: async(parent, args, context) => {
+    user: async (parent, args, context) => {
       console.log(args);
       return await User.findById(args._id).populate('comments');
     }
@@ -48,7 +48,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addComment: async(parent, args, context) => {
+    addComment: async (parent, args, context) => {
       console.log('user context from addComment', context.user);
       if (context.user) {
         const commentData = {
@@ -59,7 +59,7 @@ const resolvers = {
         const comment = await Comment.create(commentData);
 
         await User.findByIdAndUpdate(context.user._id, {
-          $push: { comments: comment._id}
+          $push: { comments: comment._id }
         });
 
         return comment;
@@ -67,7 +67,7 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    addFavorite: async(parent, { parkCode }, context) => {
+    addFavorite: async (parent, { parkCode }, context) => {
       const user = await User.findByIdAndUpdate(
         context.user._id,
         {

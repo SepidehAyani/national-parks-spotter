@@ -3,7 +3,6 @@ import { MapContainer, Polygon, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { statesData } from "../../utils/mapData";
-// import { parksData } from "../../utils/parkdata";
 import { Link } from "react-router-dom";
 import { getAllParks } from "../../utils/apiCalls";
 

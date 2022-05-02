@@ -1,10 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-// import schema from Park.js
-const parkSchema = require("./Park");
-// import schema from Comment.js
-
 const userSchema = new Schema({
 	username: {
 		type: String,
@@ -27,7 +23,7 @@ const userSchema = new Schema({
 			ref: "Comment"
 		}
 	],
-	// set faviorte parks to be an array of data that adheres to the parkSchema
+	// set favorite parks to be an array of data that adheres to the parkSchema
 	favoriteParks: [String]
 });
 
