@@ -2,6 +2,9 @@ import { Typography, Grid, ListItem } from '@mui/material';
 import { useParams } from 'react-router-dom';
 // import { parksData } from "../utils/parkdata";
 import { getOnePark } from '../utils/apiCalls';
+import { useMutation } from '@apollo/client';
+import { ADD_FAVORITE } from '../utils/mutations';
+import Auth from '../utils/auth'
 
 import { useEffect, useState } from 'react';
 
@@ -9,6 +12,26 @@ const SinglePark = () => {
   const { id } = useParams();
 
   const [park, setPark] = useState( {} );
+  const [addFavorite, { data, loading, error }] = useMutation(ADD_FAVORITE);
+
+  async function clickHandler() {
+    console.log('fav button clicked');
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    console.log('token is ', token);
+    if (!token) {
+      return false;
+    }
+    console.log('park to save is ', id);
+
+    try {
+      await addFavorite({
+        variables: { parkCode: id}
+      });
+    } catch(err) {
+      console.log(error);
+    }
+
+  }
 
   useEffect(() => {
     async function loadPark(id) {
@@ -49,6 +72,7 @@ const SinglePark = () => {
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={6}></Grid>{' '}
         </Grid>
+        <button onClick={clickHandler}>Add to Favorite Parks</button>
       </>
       ) : (
         <h2>park data not loaded</h2>
