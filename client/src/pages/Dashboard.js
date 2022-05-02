@@ -3,6 +3,16 @@ import { getFavoriteParks } from '../utils/apiCalls';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import ListSubheader from '@mui/material/ListSubheader';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
+import { Link } from 'react-router-dom'
+
+import ParkCard from '../components/ParkCard';
+
 const Dashboard = () => {
   const { loading, data } = useQuery(QUERY_ME);
 
@@ -24,11 +34,33 @@ const Dashboard = () => {
 
   return (
     <div>
-      {parksList.length ? (parksList.map(park => (
-        <p key={park.parkCode}>{park.fullName}</p>
-      ))) : (<h1>no parks to display</h1>)}
+      {parksList.length ? (
+        <>
+        <h2 id='dashboard-header'>Your Favorite Parks</h2>
+          <ImageList id='dashboard-image-list' sx={{ width: 600, aspectRatio: 1/1 }}>
+            {parksList.map((park) => (
+              <ImageListItem key={park.parkCode}>
+                <img
+                  src={`${park.images[0].url}?w=248&fit=crop&auto=format`}
+                  srcSet={`${park.images[0].url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={park.fullName}
+                  loading="lazy"
+                />
+                <Link to={`/park/${park.parkCode}`}>
+                  <ImageListItemBar
+                    title={park.fullName}
+                    subtitle={park.states}
+                  />
+                </Link>
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </>
+      ) : (
+        <h1>no parks to display</h1>
+      )}
     </div>
-  )
+  );
 };
 
 export default Dashboard;
