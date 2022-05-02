@@ -16,12 +16,16 @@ import { getOnePark } from "../utils/apiCalls";
 import ImageGallery from "../components/ImageGallery";
 
 import { useEffect, useState } from "react";
+import Auth from '../utils/auth';
+import { ADD_FAVORITE } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 const SinglePark = () => {
 	const [commentDialog, setCommentDialog] = useState(false);
 	const { id } = useParams();
 
 	const [park, setPark] = useState({});
+  const [addFavorite, { data, loading, error } ] = useMutation(ADD_FAVORITE);
 
 	useEffect(() => {
 		async function loadPark(id) {
@@ -32,6 +36,27 @@ const SinglePark = () => {
 		loadPark(id);
 	}, []);
 
+  async function favHandler() {
+    console.log('favHandler clicked');
+    console.log('park code to save', id);
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    console.log(token);
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await addFavorite({
+        variables: { parkCode: id }
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
 	return (
 		<>
 			{park.fullName ? (
@@ -40,8 +65,8 @@ const SinglePark = () => {
 					<Typography variant="h3" className="park_title">
 						<span>{park.fullName} </span>
 						<span>
-							<Button variant="h3" className="park_title">
-								Add To Favoriate{" "}
+							<Button variant="h3" className="park_title" onClick={favHandler}>
+								Add To Favorite{" "}
 							</Button>
 						</span>
 					</Typography>
