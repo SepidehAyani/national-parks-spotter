@@ -25,6 +25,8 @@ So that they can keep a list of books to purchase.
 
 ## Screenshot
 ![wireframe](assets/images/wireframe.jpg)
+![db architecture](assets/images/db.png)
+
 
 ## Demo
 [Deployed App]()

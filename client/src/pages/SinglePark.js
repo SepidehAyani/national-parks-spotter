@@ -13,7 +13,9 @@ import {
 } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+
 import { useParams } from "react-router-dom";
+// import { parksData } from "../utils/parkdata";
 import { getOnePark } from "../utils/apiCalls";
 import ImageGallery from "../components/ImageGallery";
 import CommentForm from '../components/CommentForm'
@@ -24,6 +26,7 @@ import { ADD_FAVORITE, ADD_COMMENT } from '../utils/mutations';
 import { QUERY_ME, QUERY_COMMENTS } from '../utils/queries'
 import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 
+
 const SinglePark = () => {
 	const [commentDialog, setCommentDialog] = useState(false);
 	const { id } = useParams();
@@ -32,7 +35,6 @@ const SinglePark = () => {
   const [hasPark, setHasPark] = useState(false)
 
 	const [park, setPark] = useState({});
-  const [addFavorite, { data, loading, error } ] = useMutation(ADD_FAVORITE);
 
   const { data: commentData, loading: commentLoading } = useQuery(QUERY_COMMENTS, {
     variables: { parkCode: id}
