@@ -6,23 +6,25 @@ import {
 	DialogTitle,
 	DialogContent,
 	DialogActions,
-	Button
+	Button,
+	Paper,
+	Avatar,
+	Divider
 } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
+// import { parksData } from "../utils/parkdata";
 import { getOnePark } from "../utils/apiCalls";
 import ImageGallery from "../components/ImageGallery";
 
 import { useEffect, useState } from "react";
-import Auth from '../utils/auth';
-import { ADD_FAVORITE } from '../utils/mutations';
-import { useMutation } from '@apollo/client';
 
 const SinglePark = () => {
 	const [commentDialog, setCommentDialog] = useState(false);
 	const { id } = useParams();
 
 	const [park, setPark] = useState({});
-  const [addFavorite, { data, loading, error } ] = useMutation(ADD_FAVORITE);
 
 	useEffect(() => {
 		async function loadPark(id) {
@@ -33,27 +35,6 @@ const SinglePark = () => {
 		loadPark(id);
 	}, []);
 
-  async function favHandler() {
-    console.log('favHandler clicked');
-    console.log('park code to save', id);
-
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    console.log(token);
-    if (!token) {
-      return false;
-    }
-
-    try {
-      await addFavorite({
-        variables: { parkCode: id }
-      })
-    } catch (error) {
-      console.log(error);
-    }
-
-  }
-
 	return (
 		<>
 			{park.fullName ? (
@@ -62,8 +43,8 @@ const SinglePark = () => {
 					<Typography variant="h3" className="park_title">
 						<span>{park.fullName} </span>
 						<span>
-							<Button variant="h3" className="park_title" onClick={favHandler}>
-								Add To Favorite{" "}
+							<Button variant="h3" className="park_title">
+								Add To Favoriate{" "}
 							</Button>
 						</span>
 					</Typography>
@@ -132,12 +113,179 @@ const SinglePark = () => {
 							onClose={() => setCommentDialog(false)}
 							className="projectDialog_title"
 						>
-							{commentDialog.fullName}
+							Comments
 						</DialogTitle>
 						<DialogContent>
-							<Typography className="projectDialog_description">
-								{commentDialog.description}
-							</Typography>
+							<Paper style={{ padding: "40px 20px" }}>
+								<Grid container wrap="nowrap" spacing={2}>
+									<Grid item>
+										<Avatar alt="Remy Sharp" />
+									</Grid>
+									<Grid justifyContent="left" item xs zeroMinWidth>
+										<h4 style={{ margin: 0, textAlign: "left" }}>
+											Michel Michel
+										</h4>
+										<p style={{ textAlign: "left" }}>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean luctus ut est sed faucibus. Duis bibendum ac ex
+											vehicula laoreet. Suspendisse congue vulputate lobortis.
+											Pellentesque at interdum tortor. Quisque arcu quam,
+											malesuada vel mauris et, posuere sagittis ipsum. Aliquam
+											ultricies a ligula nec faucibus. In elit metus, efficitur
+											lobortis nisi quis, molestie porttitor metus. Pellentesque
+											et neque risus. Aliquam vulputate, mauris vitae tincidunt
+											interdum, mauris mi vehicula urna, nec feugiat quam lectus
+											vitae ex.{" "}
+										</p>
+										<p style={{ textAlign: "left", color: "gray" }}>
+											posted 1 minute ago
+											<span
+												style={{
+													justifyContent: "space-between",
+													color: "gray"
+												}}
+											>
+												Replay{" "}
+											</span>
+										</p>
+									</Grid>
+								</Grid>
+								<Divider variant="fullWidth" style={{ margin: "30px 0" }} />
+								<Grid container wrap="nowrap" spacing={2}>
+									<Grid item>
+										<Avatar alt="Remy Sharp" />
+									</Grid>
+									<Grid justifyContent="left" item xs zeroMinWidth>
+										<h4 style={{ margin: 0, textAlign: "left" }}>
+											Michel Michel
+										</h4>
+										<p style={{ textAlign: "left" }}>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean luctus ut est sed faucibus. Duis bibendum ac ex
+											vehicula laoreet. Suspendisse congue vulputate lobortis.
+											Pellentesque at interdum tortor. Quisque arcu quam,
+											malesuada vel mauris et, posuere sagittis ipsum. Aliquam
+											ultricies a ligula nec faucibus. In elit metus, efficitur
+											lobortis nisi quis, molestie porttitor metus. Pellentesque
+											et neque risus. Aliquam vulputate, mauris vitae tincidunt
+											interdum, mauris mi vehicula urna, nec feugiat quam lectus
+											vitae ex.{" "}
+										</p>
+										<p style={{ textAlign: "left", color: "gray" }}>
+											posted 1 minute ago
+										</p>
+									</Grid>
+								</Grid>
+							</Paper>
+
+							<Paper style={{ padding: "40px 20px", marginTop: 100 }}>
+								<Grid container wrap="nowrap" spacing={2}>
+									<Grid item>
+										<Avatar alt="Remy Sharp" />
+									</Grid>
+									<Grid justifyContent="left" item xs zeroMinWidth>
+										<h4 style={{ margin: 0, textAlign: "left" }}>
+											Michel Michel
+										</h4>
+										<p style={{ textAlign: "left" }}>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean luctus ut est sed faucibus. Duis bibendum ac ex
+											vehicula laoreet. Suspendisse congue vulputate lobortis.
+											Pellentesque at interdum tortor. Quisque arcu quam,
+											malesuada vel mauris et, posuere sagittis ipsum. Aliquam
+											ultricies a ligula nec faucibus. In elit metus, efficitur
+											lobortis nisi quis, molestie porttitor metus. Pellentesque
+											et neque risus. Aliquam vulputate, mauris vitae tincidunt
+											interdum, mauris mi vehicula urna, nec feugiat quam lectus
+											vitae ex.{" "}
+										</p>
+										<p style={{ textAlign: "left", color: "gray" }}>
+											posted 1 minute ago
+										</p>
+									</Grid>
+								</Grid>
+							</Paper>
+							<Paper style={{ padding: "40px 20px", marginTop: 10 }}>
+								<Grid container wrap="nowrap" spacing={2}>
+									<Grid item>
+										<Avatar alt="Remy Sharp" />
+									</Grid>
+									<Grid justifyContent="left" item xs zeroMinWidth>
+										<h4 style={{ margin: 0, textAlign: "left" }}>
+											Michel Michel
+										</h4>
+										<p style={{ textAlign: "left" }}>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean luctus ut est sed faucibus. Duis bibendum ac ex
+											vehicula laoreet. Suspendisse congue vulputate lobortis.
+											Pellentesque at interdum tortor. Quisque arcu quam,
+											malesuada vel mauris et, posuere sagittis ipsum. Aliquam
+											ultricies a ligula nec faucibus. In elit metus, efficitur
+											lobortis nisi quis, molestie porttitor metus. Pellentesque
+											et neque risus. Aliquam vulputate, mauris vitae tincidunt
+											interdum, mauris mi vehicula urna, nec feugiat quam lectus
+											vitae ex.{" "}
+										</p>
+										<p style={{ textAlign: "left", color: "gray" }}>
+											posted 1 minute ago
+										</p>
+									</Grid>
+								</Grid>
+							</Paper>
+							<Paper le={{ padding: "40px 20px", marginTop: 10 }}>
+								<Grid container wrap="nowrap" spacing={2}>
+									<Grid item>
+										<Avatar alt="Remy Sharp" />
+									</Grid>
+									<Grid justifyContent="left" item xs zeroMinWidth>
+										<h4 style={{ margin: 0, textAlign: "left" }}>
+											Michel Michel
+										</h4>
+										<p style={{ textAlign: "left" }}>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean luctus ut est sed faucibus. Duis bibendum ac ex
+											vehicula laoreet. Suspendisse congue vulputate lobortis.
+											Pellentesque at interdum tortor. Quisque arcu quam,
+											malesuada vel mauris et, posuere sagittis ipsum. Aliquam
+											ultricies a ligula nec faucibus. In elit metus, efficitur
+											lobortis nisi quis, molestie porttitor metus. Pellentesque
+											et neque risus. Aliquam vulputate, mauris vitae tincidunt
+											interdum, mauris mi vehicula urna, nec feugiat quam lectus
+											vitae ex.{" "}
+										</p>
+										<p style={{ textAlign: "left", color: "gray" }}>
+											posted 1 minute ago
+										</p>
+									</Grid>
+								</Grid>
+							</Paper>
+							<Paper style={{ padding: "40px 20px", marginTop: 10 }}>
+								<Grid container wrap="nowrap" spacing={2}>
+									<Grid item>
+										<Avatar alt="Remy Sharp" />
+									</Grid>
+									<Grid justifyContent="left" item xs zeroMinWidth>
+										<h4 style={{ margin: 0, textAlign: "left" }}>
+											Michel Michel
+										</h4>
+										<p style={{ textAlign: "left" }}>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Aenean luctus ut est sed faucibus. Duis bibendum ac ex
+											vehicula laoreet. Suspendisse congue vulputate lobortis.
+											Pellentesque at interdum tortor. Quisque arcu quam,
+											malesuada vel mauris et, posuere sagittis ipsum. Aliquam
+											ultricies a ligula nec faucibus. In elit metus, efficitur
+											lobortis nisi quis, molestie porttitor metus. Pellentesque
+											et neque risus. Aliquam vulputate, mauris vitae tincidunt
+											interdum, mauris mi vehicula urna, nec feugiat quam lectus
+											vitae ex.{" "}
+										</p>
+										<p style={{ textAlign: "left", color: "gray" }}>
+											posted 1 minute ago
+										</p>
+									</Grid>
+								</Grid>
+							</Paper>
 						</DialogContent>
 						<DialogActions className="projectDialog_actions"></DialogActions>
 					</Dialog>
