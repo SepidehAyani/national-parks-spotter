@@ -35,6 +35,7 @@ const SinglePark = () => {
   const [hasPark, setHasPark] = useState(false)
 
 	const [park, setPark] = useState({});
+  const [addFavorite, { data, loading, error }] = useMutation(ADD_FAVORITE);
 
   const { data: commentData, loading: commentLoading } = useQuery(QUERY_COMMENTS, {
     variables: { parkCode: id}
