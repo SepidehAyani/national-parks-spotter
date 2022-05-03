@@ -9,7 +9,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
-  const { data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_ME);
 
   const [parksList, setParksList] = useState([]);
 
