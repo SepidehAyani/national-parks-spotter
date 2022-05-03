@@ -5,7 +5,6 @@ import Auth from '../utils/auth';
 
 import { TextField, Button } from '@mui/material'
 
-
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);

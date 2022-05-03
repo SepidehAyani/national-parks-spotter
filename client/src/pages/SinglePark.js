@@ -28,35 +28,36 @@ import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 
 
 const SinglePark = () => {
-	const [commentDialog, setCommentDialog] = useState(false);
-	const { id } = useParams();
+  const [commentDialog, setCommentDialog] = useState(false);
+  const { id } = useParams();
 
-  const { data: myData, loading: loadingMe} = useQuery(QUERY_ME);
+  const { data: myData, loading: loadingMe } = useQuery(QUERY_ME);
   const [hasPark, setHasPark] = useState(false)
 
-	const [park, setPark] = useState({});
+  const [park, setPark] = useState({});
   const [addFavorite, { data, loading, error }] = useMutation(ADD_FAVORITE);
 
   const { data: commentData, loading: commentLoading } = useQuery(QUERY_COMMENTS, {
-    variables: { parkCode: id}
+    variables: { parkCode: id }
   });
   const [comments, setComments] = useState('');
 
-  const [refetchComments, { loadingRefetch, dataRefetch} ] = useLazyQuery(QUERY_COMMENTS, {
+  const [refetchComments, { loadingRefetch, dataRefetch }] = useLazyQuery(QUERY_COMMENTS, {
     variables: { parkCode: id }
   });
 
-	useEffect(() => {
-		async function loadPark(id) {
-			let parkData = await getOnePark(id);
-			setPark(parkData.data[0]);
-		}
-		loadPark(id);
-	}, []);
+  useEffect(() => {
+    async function loadPark(id) {
+      let parkData = await getOnePark(id);
+      setPark(parkData.data[0]);
+    }
+    loadPark(id);
+  }, []);
 
   useEffect(() => {
     if (myData) {
       if (myData.me.favoriteParks.includes(id)) {
+
         setHasPark(true);
       }
     }
@@ -64,9 +65,7 @@ const SinglePark = () => {
 
   useEffect(() => {
     if (commentData) {
-        console.log('commentData returned', commentData);
-        setComments(commentData.comments);
-        console.log('comments after set', comments);
+      setComments(commentData.comments);
     }
   }, [commentData]);
 
@@ -91,7 +90,6 @@ const SinglePark = () => {
 
   function dateFormat(createdAt) {
     const date = new Date(parseInt(createdAt));
-    console.log(date);
     const [month, day, year] = [
       date.getMonth(),
       date.getDate(),
@@ -99,9 +97,9 @@ const SinglePark = () => {
     ];
     return `${month} / ${day} / ${year}`;
   }
-  
 
-	return (
+
+  return (
     <>
       {park.fullName ? (
         <>
@@ -210,7 +208,6 @@ const SinglePark = () => {
                       </Grid>
                     </Grid>
                     <Divider variant="fullWidth" style={{ margin: '30px 0' }} />
-                    
                   </DialogContent>
                 ))}
               </Paper>
@@ -233,15 +230,18 @@ const SinglePark = () => {
               <DialogActions className="projectDialog_actions"></DialogActions>
             </Dialog>
           )}
-          <CommentForm
-            myData={myData}
-            id={id}
-            comments={comments}
-            setComments={setComments}
-          />
         </>
       ) : (
         <h2>park data not loaded</h2>
+      )}
+
+      {myData && (
+        <CommentForm
+          myData={myData}
+          id={id}
+          comments={comments}
+          setComments={setComments}
+        />
       )}
     </>
   );
