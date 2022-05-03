@@ -57,6 +57,7 @@ const SinglePark = () => {
   useEffect(() => {
     if (myData) {
       if (myData.me.favoriteParks.includes(id)) {
+        
         setHasPark(true);
       }
     }
@@ -64,9 +65,7 @@ const SinglePark = () => {
 
   useEffect(() => {
     if (commentData) {
-        console.log('commentData returned', commentData);
         setComments(commentData.comments);
-        console.log('comments after set', comments);
     }
   }, [commentData]);
 
@@ -91,7 +90,6 @@ const SinglePark = () => {
 
   function dateFormat(createdAt) {
     const date = new Date(parseInt(createdAt));
-    console.log(date);
     const [month, day, year] = [
       date.getMonth(),
       date.getDate(),
@@ -210,7 +208,6 @@ const SinglePark = () => {
                       </Grid>
                     </Grid>
                     <Divider variant="fullWidth" style={{ margin: '30px 0' }} />
-                    
                   </DialogContent>
                 ))}
               </Paper>
@@ -233,15 +230,18 @@ const SinglePark = () => {
               <DialogActions className="projectDialog_actions"></DialogActions>
             </Dialog>
           )}
-          <CommentForm
-            myData={myData}
-            id={id}
-            comments={comments}
-            setComments={setComments}
-          />
         </>
       ) : (
         <h2>park data not loaded</h2>
+      )}
+
+      {myData && (
+        <CommentForm
+          myData={myData}
+          id={id}
+          comments={comments}
+          setComments={setComments}
+        />
       )}
     </>
   );
