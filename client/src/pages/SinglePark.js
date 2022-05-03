@@ -1,13 +1,18 @@
 import {
-	Typography,
-	Grid,
-	ListItem,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogActions,
-	Button
-} from "@mui/material";
+  Typography,
+  Grid,
+  ListItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Paper,
+  Avatar,
+  Divider,
+} from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { useParams } from "react-router-dom";
 import { getOnePark } from "../utils/apiCalls";
 import ImageGallery from "../components/ImageGallery";
@@ -60,7 +65,7 @@ const SinglePark = () => {
         setComments(commentData.comments);
         console.log('comments after set', comments);
     }
-  }, [commentData])
+  }, [commentData]);
 
 
   async function favHandler() {
@@ -81,6 +86,16 @@ const SinglePark = () => {
 
   }
 
+  function dateFormat(createdAt) {
+    const date = new Date(parseInt(createdAt));
+    console.log(date);
+    const [month, day, year] = [
+      date.getMonth(),
+      date.getDate(),
+      date.getFullYear(),
+    ];
+    return `${month} / ${day} / ${year}`;
+  }
   
 
 	return (
@@ -153,10 +168,7 @@ const SinglePark = () => {
             <Grid item xs={12} sm={12} md={4} lg={6}>
               {' '}
               <ImageGallery images={park.images} />{' '}
-              <Button onClick={() => {
-                
-                setCommentDialog(park)
-              }}>
+              <Button onClick={() => setCommentDialog(park)}>
                 Read all Comments
               </Button>{' '}
             </Grid>{' '}
@@ -173,19 +185,33 @@ const SinglePark = () => {
                 onClose={() => setCommentDialog(false)}
                 className="projectDialog_title"
               >
-                User comments
+                Comments
               </DialogTitle>
+              <Paper style={{ padding: '40px 20px' }}>
+                {comments.map((comment) => (
+                  <DialogContent>
+                    <Grid container wrap="nowrap" spacing={2}>
+                      <Grid item>
+                        <Avatar alt="Remy Sharp" />
+                      </Grid>
+                      <Grid justifyContent="left" item xs zeroMinWidth>
+                        <h4 style={{ margin: 0, textAlign: 'left' }}>
+                          {comment.userId.username}
+                        </h4>
+                        <p style={{ textAlign: 'left' }}>
+                          {comment.commentText}
+                        </p>
+                        <p style={{ textAlign: 'left', color: 'gray' }}>
+                          {dateFormat(comment.createdAt)}
+                        </p>
+                      </Grid>
+                    </Grid>
+                    <Divider variant="fullWidth" style={{ margin: '30px 0' }} />
+                    
+                  </DialogContent>
+                ))}
+              </Paper>
 
-              {comments.map((comment) => (
-                <DialogContent>
-                  <Typography className="projectDialog_description">
-                    {comment.userId.username}
-                  </Typography>
-                  <Typography className="projectDialog_description">
-                    {comment.commentText}
-                  </Typography>
-                </DialogContent>
-              ))}
               <DialogActions className="projectDialog_actions"></DialogActions>
             </Dialog>
           ) : (
@@ -204,7 +230,12 @@ const SinglePark = () => {
               <DialogActions className="projectDialog_actions"></DialogActions>
             </Dialog>
           )}
-          <CommentForm myData={myData} id={id} comments={comments} setComments={setComments} />
+          <CommentForm
+            myData={myData}
+            id={id}
+            comments={comments}
+            setComments={setComments}
+          />
         </>
       ) : (
         <h2>park data not loaded</h2>
