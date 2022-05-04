@@ -29,6 +29,7 @@ export const ADD_COMMENT = gql`
     createdAt
     userId {
      _id 
+     username
     }
     parkCode
   }
