@@ -27,7 +27,8 @@ body {
 
 #app-bar {
   position: fixed;
-  margin-top: 92.5vh;
+  margin-top: 91vh;
+  padding-bottom: 1em;
 }
 
 #app-bar a {
