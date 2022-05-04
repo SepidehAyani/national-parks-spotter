@@ -50,11 +50,7 @@ function App() {
 	return (
 		<ApolloProvider client={client}>
 			<Router>
-				<Container className={"top_60"}>
-					<Grid item xs={12} sm={12} md={4} lg={3}>
 						<Nav />
-					</Grid>
-					<Grid item xs={12} sm={12} md={4} lg={3}>
 						<Routes>
 							<Route
 								exact
@@ -72,11 +68,8 @@ function App() {
 							<Route exact path="/park/:id" element={<SinglePark />} />
 							<Route element={<NoMatch />}></Route>
 						</Routes>
-					</Grid>
-					<Grid item xs={12} sm={12} md={4} lg={3}>
 						<Footer />
-					</Grid>
-				</Container>
+				
 			</Router>
 		</ApolloProvider>
 	);

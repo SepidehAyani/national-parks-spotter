@@ -5,8 +5,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 const Footer = () => {
+
+  const makeStyles = {
+
+  }
 	return (
-		<AppBar position="static">
+		<AppBar id="app-bar" position="fixed">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Typography

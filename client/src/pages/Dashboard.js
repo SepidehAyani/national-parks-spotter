@@ -32,7 +32,7 @@ const Dashboard = () => {
       {parksList.length ? (
         <>
           <h2 id='dashboard-header'>Your Favorite Parks</h2>
-          <ImageList id='dashboard-image-list' sx={{ width: 600, aspectRatio: 1 / 1 }}>
+          <ImageList sx={{ aspectRatio: 1 / 1 }}>
             {parksList.map((park) => (
               <ImageListItem key={park.parkCode}>
                 <img
