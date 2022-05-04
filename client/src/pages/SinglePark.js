@@ -28,36 +28,36 @@ import { useMutation, useQuery, useLazyQuery } from '@apollo/client';
 
 
 const SinglePark = () => {
-	const [commentDialog, setCommentDialog] = useState(false);
-	const { id } = useParams();
+  const [commentDialog, setCommentDialog] = useState(false);
+  const { id } = useParams();
 
-  const { data: myData, loading: loadingMe} = useQuery(QUERY_ME);
+  const { data: myData, loading: loadingMe } = useQuery(QUERY_ME);
   const [hasPark, setHasPark] = useState(false)
 
-	const [park, setPark] = useState({});
+  const [park, setPark] = useState({});
   const [addFavorite, { data, loading, error }] = useMutation(ADD_FAVORITE);
 
   const { data: commentData, loading: commentLoading } = useQuery(QUERY_COMMENTS, {
-    variables: { parkCode: id}
+    variables: { parkCode: id }
   });
   const [comments, setComments] = useState('');
 
-  const [refetchComments, { loadingRefetch, dataRefetch} ] = useLazyQuery(QUERY_COMMENTS, {
+  const [refetchComments, { loadingRefetch, dataRefetch }] = useLazyQuery(QUERY_COMMENTS, {
     variables: { parkCode: id }
   });
 
-	useEffect(() => {
-		async function loadPark(id) {
-			let parkData = await getOnePark(id);
-			setPark(parkData.data[0]);
-		}
-		loadPark(id);
-	}, []);
+  useEffect(() => {
+    async function loadPark(id) {
+      let parkData = await getOnePark(id);
+      setPark(parkData.data[0]);
+    }
+    loadPark(id);
+  }, []);
 
   useEffect(() => {
     if (myData) {
       if (myData.me.favoriteParks.includes(id)) {
-        
+
         setHasPark(true);
       }
     }
@@ -65,7 +65,7 @@ const SinglePark = () => {
 
   useEffect(() => {
     if (commentData) {
-        setComments(commentData.comments);
+      setComments(commentData.comments);
     }
   }, [commentData]);
 
@@ -97,9 +97,9 @@ const SinglePark = () => {
     ];
     return `${month} / ${day} / ${year}`;
   }
-  
 
-	return (
+
+  return (
     <>
       {park.fullName ? (
         <>
