@@ -31,9 +31,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='form-div'>
       <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form id='login-form' className='form' onSubmit={handleFormSubmit}>
         <div>
           <TextField
             variant='outlined'
@@ -62,7 +62,7 @@ const Login = () => {
           </div>
         ) : null}
         <div>
-          <Button type='submit' variant='outlined'>Submit</Button>
+          <Button type='submit' variant='contained' color='success' sx={{backgroundColor: 'darkgreen'}}>Submit</Button>
         </div>
       </form>
     </div>

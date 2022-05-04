@@ -41,9 +41,9 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="form-div">
       <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form id="signup-form" className="form" onSubmit={handleFormSubmit}>
         <div>
           <TextField
             variant="outlined"
@@ -78,7 +78,12 @@ const Signup = () => {
           />
         </div>
         <div>
-          <Button type="submit" variant="outlined">
+          <Button
+            type="submit"
+            variant="contained"
+            color='success'
+            sx={{ backgroundColor: 'darkgreen', color: 'whitesmoke' }}
+          >
             Submit
           </Button>
         </div>

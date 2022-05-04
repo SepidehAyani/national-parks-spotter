@@ -9,8 +9,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
-  const {data} = useQuery(QUERY_ME);
-
+  const { data } = useQuery(QUERY_ME);
   const [parksList, setParksList] = useState([]);
 
   async function loadParks(favParksArray) {
@@ -32,7 +31,7 @@ const Dashboard = () => {
       {parksList.length ? (
         <>
           <h2 id='dashboard-header'>Your Favorite Parks</h2>
-          <ImageList id='dashboard-image-list' sx={{ width: 600, aspectRatio: 1 / 1 }}>
+          <ImageList sx={{ aspectRatio: 1 / 1 }}>
             {parksList.map((park) => (
               <ImageListItem key={park.parkCode}>
                 <img
