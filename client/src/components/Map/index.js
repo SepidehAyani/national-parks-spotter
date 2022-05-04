@@ -16,7 +16,7 @@ const interactionOptions = {
     zoomSnap: false,
     zoomDelta: false,
     tractRexize: false,
-    touchZoom: false,
+    touchZoom: true,
     scrollWheelZoom: true
 };
 
