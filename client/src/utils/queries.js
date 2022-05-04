@@ -17,6 +17,20 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_COMMENTS = gql`
+  query Comments($parkCode: String) {
+    comments(parkCode: $parkCode) {
+      _id
+      commentText
+      createdAt
+      parkCode
+      userId {
+        username
+      }
+    }
+  }
+`;
+
 export const QUERY_ALL_USERS = gql`
   {
     _id

@@ -5,12 +5,10 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      console.log('this is the ME from context', context.user);
 
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
 
-        console.log('this is the user data returned', userData);
         return userData.populate('comments');
       }
 
@@ -22,6 +20,9 @@ const resolvers = {
     user: async (parent, args, context) => {
       console.log(args);
       return await User.findById(args._id).populate('comments');
+    },
+    comments: async(parent, args, context) => {
+      return Comment.find({ parkCode: args.parkCode }).populate('userId');
     }
   },
   Mutation: {
@@ -62,7 +63,7 @@ const resolvers = {
           $push: { comments: comment._id }
         });
 
-        return comment;
+        return comment.populate('userId');
       }
 
       throw new AuthenticationError('Not logged in');

@@ -1,5 +1,5 @@
 const baseUrl = 'https://developer.nps.gov/api/v1/';
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = 'tFvbGk7MUVgMtAtfrFjmUMwlUk5MeulMuDhn4amF';
 const headers = {
   headers: {
     'X-API-KEY': API_KEY,
