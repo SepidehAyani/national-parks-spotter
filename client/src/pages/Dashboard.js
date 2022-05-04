@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
   const { data } = useQuery(QUERY_ME);
-
   const [parksList, setParksList] = useState([]);
 
   async function loadParks(favParksArray) {
