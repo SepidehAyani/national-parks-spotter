@@ -33,7 +33,7 @@ const Footer = () => {
           >
             developed by <a href="https://github.com/robel-codes"> Robel</a>, <a href="https://github.com/SepidehAyani">Sepideh</a>, and <a href="https://github.com/soundproofboot">Colin</a>
           </Typography>
-          <Button variant="outlined" style={{ color: 'white' }}>
+          <Button variant="contained" style={{ backgroundColor: 'saddlebrown', color: 'white' }}>
             <a href="https://www.nps.gov/getinvolved/donate.htm" target='_blank'>DONATE</a>
           </Button>
           <p>to the Parks Service</p>

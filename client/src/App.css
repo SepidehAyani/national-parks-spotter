@@ -44,3 +44,27 @@ body {
 #nav-container a {
   text-decoration: none;
 }
+
+#logged-in-nav a {
+  color: whitesmoke;
+  font-size: larger;
+  text-decoration:  none;
+  font-weight: bold;
+}
+
+.form-div {
+  margin-left: 10vw;
+  margin-top: 10vh;
+}
+
+.form-div h2 {
+  font-size: 3em
+}
+
+.form {
+
+}
+
+.form * {
+  margin-top: .8em;
+}
