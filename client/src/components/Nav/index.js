@@ -151,21 +151,25 @@ const Nav = () => {
     );
   } else {
     return (
-      <>
-        <h1 id='logged-out-nav-heading'>National Park Spotter</h1>
-        <ul className='nav-buttons-container'>
+      <div id="nav-container" style={{backgroundColor: 'saddlebrown'}}>
+        <h1 id="logged-out-nav-heading" style={{color: 'whitesmoke'}}>National Park Spotter</h1>
+        <ul className="nav-buttons-container">
           <li>
             <Link to="/login">
-              <Button variant="contained">Login</Button>
+              <Button variant="contained" style={{ backgroundColor: 'darkgreen' }}>
+                Login
+              </Button>
             </Link>
           </li>
           <li>
             <Link to="/signup">
-              <Button variant="contained">Sign Up</Button>
+              <Button variant="contained" style={{ backgroundColor: 'darkgreen' }}>
+                Sign Up
+              </Button>
             </Link>
           </li>
         </ul>
-      </>
+      </div>
     );
   }
 };

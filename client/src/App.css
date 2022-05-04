@@ -12,6 +12,7 @@ body {
 #logged-out-nav-heading {
   text-align: center;
   font-size: 4vw;
+  margin-left: 5vw;
 }
 
 .nav-buttons-container {
@@ -26,9 +27,20 @@ body {
 
 #app-bar {
   position: fixed;
-  margin-top: 93vh;
+  margin-top: 92.5vh;
 }
 
-#map-container {
-  height: 1vh;
+#app-bar a {
+  color: white;
+  margin-left: 1vw;
+}
+
+#nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-container a {
+  text-decoration: none;
 }

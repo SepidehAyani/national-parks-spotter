@@ -50,7 +50,7 @@ const Map = (props) => {
         <MapContainer
           center={center}
           zoom={4.8}
-          style={{ width: '100%', height: '80vh' }}
+          style={{ width: '100%', height: '85vh' }}
           {...interactionOptions}
         >
           {statesData.features.map((state) => {
