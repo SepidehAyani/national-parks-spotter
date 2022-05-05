@@ -12,7 +12,7 @@ So that they can keep a list of books to purchase.
 
 ## Table of Contents 
 1. [Project Links](#Project-Links)
-1. [Screenshot](#Screenshot)
+1. [Screenshots](#Screenshot)
 1. [Deployed App](#Deployed-App)
 1. [Installation](#Installation)
 1. [Contribution Guidelines](#Contribution-Guidelines)
@@ -23,17 +23,19 @@ So that they can keep a list of books to purchase.
 ## Project Links
 [Repo Link](https://github.com/SepidehAyani/national-parks-spotter) <br>
 
-## Screenshot
-![wireframe](assets/images/wireframe.jpg)
-![db architecture](assets/images/db.png)
+## Screenshots
+#### Homepage
+![Homepage](assets/images/overview.png)
+#### GraphQL Architecture
+![GraphQL Architecture](assets/images/db.png)
 
 
-## Demo
-[Deployed App](https://pacific-brushlands-65513.herokuapp.com/)
+## Deployed App
+Find deployed app [here](https://pacific-brushlands-65513.herokuapp.com/)
 
 ## Instructions
 * To use this app npm init has to be called to create your `package.json` file.
-* The following necessary `Npm` dependencies must be installed to run the application properly: the needed dependencies will be found on the `package.json` file. Simply run `npm i` to install the needed dependencies.
+* The following necessary `npm` dependencies must be installed to run the application properly: the needed dependencies will be found on the `package.json` file. Simply run `npm i` to install the needed dependencies.
 * To properly install the database you must create at cluster on `Mongodb atlas`.
 * Run `npm start` for the port to start listening with mongoose.
 * This app is deployed on `Heroku`
