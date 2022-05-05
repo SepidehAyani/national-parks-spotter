@@ -31,20 +31,10 @@ const Footer = () => {
             }}
             style={{ color: "whitesmoke" }}
           >
-            developed by <a href="https://github.com/robel-codes"> Robel</a>,{" "}
-            <a href="https://github.com/SepidehAyani">Sepideh</a>, and{" "}
-            <a href="https://github.com/soundproofboot">Colin</a>
+            Developed by <a href="https://github.com/robel-codes"> Robel</a>, <a href="https://github.com/SepidehAyani">Sepideh</a>, and <a href="https://github.com/soundproofboot">Colin</a>
           </Typography>
-          <Button
-            variant="contained"
-            style={{ backgroundColor: "saddlebrown", color: "white" }}
-          >
-            <a
-              href="https://www.nps.gov/getinvolved/donate.htm"
-              target="_blank" rel="noreferrer"
-            >
-              DONATE
-            </a>
+          <Button variant="contained" style={{ backgroundColor: 'saddlebrown', color: 'white' }}>
+            <a href="https://www.nps.gov/getinvolved/donate.htm" target='_blank' rel="noreferrer">DONATE</a>
           </Button>
           <p>to the Parks Service</p>
         </Toolbar>
