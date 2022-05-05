@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
+import { ADD_USER } from "../utils/mutations";
 
-import { TextField, Button } from '@mui/material';
+import { TextField, Button } from "@mui/material";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
   const [addUser] = useMutation(ADD_USER);
 
@@ -81,8 +81,8 @@ const Signup = () => {
           <Button
             type="submit"
             variant="contained"
-            color='success'
-            sx={{ backgroundColor: 'darkgreen', color: 'whitesmoke' }}
+            color="success"
+            sx={{ backgroundColor: "darkgreen", color: "whitesmoke" }}
           >
             Submit
           </Button>

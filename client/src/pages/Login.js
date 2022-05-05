@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
 
-import { TextField, Button } from '@mui/material'
+import { TextField, Button } from "@mui/material";
 
 const Login = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (e) => {
@@ -31,13 +31,13 @@ const Login = () => {
   };
 
   return (
-    <div className='form-div'>
+    <div className="form-div">
       <h2>Login</h2>
-      <form id='login-form' className='form' onSubmit={handleFormSubmit}>
+      <form id="login-form" className="form" onSubmit={handleFormSubmit}>
         <div>
           <TextField
-            variant='outlined'
-            label='Email Address'
+            variant="outlined"
+            label="Email Address"
             value={formState.email}
             type="email"
             name="email"
@@ -47,12 +47,12 @@ const Login = () => {
         </div>
         <div>
           <TextField
-            variant='outlined'
-            label='Password'
+            variant="outlined"
+            label="Password"
             value={formState.password}
             type="password"
-            name='password'
-            id='password'
+            name="password"
+            id="password"
             onChange={handleChange}
           />
         </div>
@@ -62,7 +62,14 @@ const Login = () => {
           </div>
         ) : null}
         <div>
-          <Button type='submit' variant='contained' color='success' sx={{backgroundColor: 'darkgreen'}}>Submit</Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="success"
+            sx={{ backgroundColor: "darkgreen" }}
+          >
+            Submit
+          </Button>
         </div>
       </form>
     </div>

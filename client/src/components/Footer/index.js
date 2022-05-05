@@ -1,9 +1,9 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button'
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
 
 const Footer = () => {
   const makeStyles = {};
@@ -11,7 +11,7 @@ const Footer = () => {
     <AppBar
       id="app-bar"
       position="fixed"
-      style={{ backgroundColor: 'darkgreen' }}
+      style={{ backgroundColor: "darkgreen" }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -22,14 +22,14 @@ const Footer = () => {
             sx={{
               flexGrow: 1,
               display: {
-                xs: 'none',
-                s: 'flex',
-                md: 'flex',
-                lg: 'flex',
-                xl: 'flex',
+                xs: "none",
+                s: "flex",
+                md: "flex",
+                lg: "flex",
+                xl: "flex",
               },
             }}
-            style={{ color: 'whitesmoke' }}
+            style={{ color: "whitesmoke" }}
           >
             Developed by <a href="https://github.com/robel-codes"> Robel</a>, <a href="https://github.com/SepidehAyani">Sepideh</a>, and <a href="https://github.com/soundproofboot">Colin</a>
           </Typography>

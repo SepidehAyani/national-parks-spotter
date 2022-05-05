@@ -1,9 +1,9 @@
 import Map from "../components/Map";
 
 const Home = (props) => {
-	const { parkClicked, setParkClicked } = props;
+  const { parkClicked, setParkClicked } = props;
 
-	return <Map parkClicked={parkClicked} setParkClicked={setParkClicked} />;
+  return <Map parkClicked={parkClicked} setParkClicked={setParkClicked} />;
 };
 
 export default Home;
