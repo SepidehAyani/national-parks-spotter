@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 
 import { useParams } from "react-router-dom";
-// import { parksData } from "../utils/parkdata";
 import { getOnePark } from "../utils/apiCalls";
 import ImageGallery from "../components/ImageGallery";
 import CommentForm from "../components/CommentForm";
