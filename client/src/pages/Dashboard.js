@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { getFavoriteParks } from '../utils/apiCalls';
-import { useQuery } from '@apollo/client';
-import { QUERY_ME } from '../utils/queries';
+import { useState, useEffect } from "react";
+import { getFavoriteParks } from "../utils/apiCalls";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
 
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import { Link } from 'react-router-dom'
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { data } = useQuery(QUERY_ME);
@@ -15,7 +15,7 @@ const Dashboard = () => {
   async function loadParks(favParksArray) {
     const parksData = await getFavoriteParks(favParksArray);
     setParksList(parksData.data);
-    console.log('parksList loaded', parksData.data);
+    console.log("parksList loaded", parksData.data);
   }
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Dashboard = () => {
     <div>
       {parksList.length ? (
         <>
-          <h2 id='dashboard-header'>Your Favorite Parks</h2>
+          <h2 id="dashboard-header">Your Favorite Parks</h2>
           <ImageList sx={{ aspectRatio: 1 / 1 }}>
             {parksList.map((park) => (
               <ImageListItem key={park.parkCode}>
