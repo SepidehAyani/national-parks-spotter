@@ -31,7 +31,7 @@ So that they can keep a list of books to purchase.
 
 
 ## Deployed App
-Find deployed app [here](https://pacific-brushlands-65513.herokuapp.com/)
+Find deployed app [here](https://park-spotter.herokuapp.com/)
 
 ## Instructions
 * To use this app npm init has to be called to create your `package.json` file.
